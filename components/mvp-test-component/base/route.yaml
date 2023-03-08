@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: mvp-test-component
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: mvp-test-component
+    app.kubernetes.io/part-of: mvp-test-app
+  name: mvp-test-component
+  namespace: mvp-demo-dev-namespace-mzvs-tenant
+spec:
+  port:
+    targetPort: 8081
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: mvp-test-component
+    weight: 100
+status: {}
